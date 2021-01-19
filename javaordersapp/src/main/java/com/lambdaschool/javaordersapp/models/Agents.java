@@ -4,19 +4,21 @@ package com.lambdaschool.javaordersapp.models;
 // ---- Auto Imports ------
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "names")
+@Table(name = "agents")
 public class Agents
 {
     // @Id and @GeneratedValue help set the primary key
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // this is standard code
-    // table fields
     private long agentcode; //primary key not null
+
     private String agentname;
     private String workingarea;
     private double commission;
@@ -32,6 +34,7 @@ public class Agents
     @OneToMany(mappedBy = "agents",
                 cascade = CascadeType.ALL,
                 orphanRemoval = true)
+    @JsonIgnoreProperties(value = "agents", allowSetters = true) //
     private List<Customers> customers = new ArrayList<>();
 
     // Constructors
@@ -49,6 +52,7 @@ public class Agents
         String country
         )
     {
+        this.agentname = agentname;
         this.workingarea = workingarea;
         this.phone = phone;
         this.country = country;
@@ -114,5 +118,16 @@ public class Agents
     public void setCommission(double commission)
     {
         this.commission = commission;
+    }
+
+    // ------- Associations Getters and Setters -------
+    public List<Customers> getCustomers()
+    {
+        return customers;
+    }
+
+    public void setCustomers(List<Customers> customers)
+    {
+        this.customers = customers;
     }
 }

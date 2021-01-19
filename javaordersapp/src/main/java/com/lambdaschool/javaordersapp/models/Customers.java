@@ -13,7 +13,6 @@ public class Customers
     //generate primary key
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // this is boilerplate
-    // table fields
     private long custcode;
 
     private String custname;
@@ -188,5 +187,14 @@ public class Customers
         this.outstandingamt = outstandingamt;
     }
 
+    // ------ Association Getters and Setters -----
+    public Agents getAgents()
+    {
+        return agents;
+    }
 
+    public void setAgents(Agents agents)
+    {
+        this.agents = agents;
+    }
 }

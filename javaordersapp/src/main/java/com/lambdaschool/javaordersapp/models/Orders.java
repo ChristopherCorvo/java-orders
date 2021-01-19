@@ -16,25 +16,27 @@ public class Orders
     private long ordnum; // primary key, not null
 
     private double ordamount;
+
     private double advanceamount;
 
     private String orderdescription;
 
 
-
-    // this creates a joining table between Orders and Payments
+    // ------ Association Fields ------
     @ManyToMany()
     @JoinTable(name = "orderspayments",
-                joinColumns = @JoinColumn(name = "ordernum"), // this string needs to be the name of the primary key
-                inverseJoinColumns = @JoinColumn(name= "paymentid"))
-    @JsonIgnoreProperties("orders")
-
-    Set<Payments> payments = new HashSet<>(); // hashset is a key value data type. The key is auto generated
+        joinColumns = @JoinColumn(name = "ordnum"),
+        inverseJoinColumns = @JoinColumn(name = "paymentid"))
+    private Set<Payments> payments = new HashSet<>();
 
     // this connects Orders to Customers
     @ManyToOne()
-    @JoinColumn(name = "custcode", nullable = false)
+    @JoinColumn(name = "custcode",
+        nullable = false)
+    @JsonIgnoreProperties(value = "orders",
+        allowSetters = true)
     private Customers customers;
+
     // ----- Constructors ------
     public Orders()
     {
@@ -53,7 +55,6 @@ public class Orders
         this.advanceamount = advanceamount;
         this.customers = customers;
         this.orderdescription = orderdescription;
-
     }
 
     // ------ Getters and Setters -------
@@ -97,6 +98,8 @@ public class Orders
         this.orderdescription = orderdescription;
     }
 
+
+    // ------ Association Getters and Setters -------
     public Set<Payments> getPayments()
     {
         return payments;

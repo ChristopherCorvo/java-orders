@@ -13,16 +13,13 @@ public class Payments
     // Create primary key
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    // table fields
     private long paymentid; // primary key
 
-    @Column(nullable = false,
-            unique = true)
+    
     private String type;
 
     // ------ Associations --------
     @ManyToMany(mappedBy = "payments")
-    @JsonIgnoreProperties("payments")
     private Set<Orders> orders = new HashSet<>();
 
     // ----- Constructors -----
@@ -60,6 +57,8 @@ public class Payments
         this.type = type;
     }
 
+    // ---------- Association Fields --------
+
     public Set<Orders> getOrders()
     {
         return orders;
@@ -70,3 +69,4 @@ public class Payments
         this.orders = orders;
     }
 }
+
