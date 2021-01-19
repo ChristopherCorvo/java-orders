@@ -1,14 +1,15 @@
-package com.lambdaschool.orders;
+package com.lambdaschool.javaordersapp;
 
 import com.github.javafaker.Faker;
-import com.lambdaschool.orders.models.Agent;
-import com.lambdaschool.orders.models.Customer;
-import com.lambdaschool.orders.models.Order;
-import com.lambdaschool.orders.models.Payment;
-import com.lambdaschool.orders.repositories.AgentsRepository;
-import com.lambdaschool.orders.repositories.CustomersRepository;
-import com.lambdaschool.orders.repositories.OrdersRepository;
-import com.lambdaschool.orders.repositories.PaymentRepository;
+import com.lambdaschool.javaordersapp.models.Agents;
+import com.lambdaschool.javaordersapp.models.Customers;
+import com.lambdaschool.javaordersapp.models.Orders;
+import com.lambdaschool.javaordersapp.models.Payments;
+import com.lambdaschool.javaordersapp.repositories.AgentsRepository;
+import com.lambdaschool.javaordersapp.repositories.CustomersRepository;
+
+import com.lambdaschool.javaordersapp.repositories.OrdersRepository;
+import com.lambdaschool.javaordersapp.repositories.PaymentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -46,7 +47,7 @@ public class SeedData
      * Connects the payment table to this SeedData method
      */
     @Autowired
-    private PaymentRepository paymentrepos;
+    private PaymentsRepository paymentrepos;
 
     /**
      * A Random generator is needed to randomly generate faker data.
@@ -67,78 +68,78 @@ public class SeedData
     public void run(String[] args) throws
             Exception
     {
-        Payment pay1 = new Payment("Cash");
-        Payment pay2 = new Payment("Gift Card");
-        Payment pay3 = new Payment("Credit Card");
-        Payment pay4 = new Payment("Mobile Pay");
+        Payments pay1 = new Payments("Cash");
+        Payments pay2 = new Payments("Gift Card");
+        Payments pay3 = new Payments("Credit Card");
+        Payments pay4 = new Payments("Mobile Pay");
 
         pay1 = paymentrepos.save(pay1);
         pay2 = paymentrepos.save(pay2);
         pay3 = paymentrepos.save(pay3);
         pay4 = paymentrepos.save(pay4);
 
-        Agent a01 = new Agent("Ramasundar",
+        Agents a01 = new Agents("Ramasundar",
                               "Bangalore",
                               0.15,
                               "077-25814763",
                               "");
-        Agent a02 = new Agent("Alex",
+        Agents a02 = new Agents("Alex",
                               "London",
                               0.13,
                               "075-12458969",
                               "");
-        Agent a03 = new Agent("Alford",
+        Agents a03 = new Agents("Alford",
                               "New York",
                               0.12,
                               "044-25874365",
                               "");
-        Agent a04 = new Agent("Ravi",
+        Agents a04 = new Agents("Ravi",
                               "Bangalore",
                               0.15,
                               "077-45625874",
                               "");
-        Agent a05 = new Agent("Santakumar",
+        Agents a05 = new Agents("Santakumar",
                               "Chennai",
                               0.14,
                               "007-22388644",
                               "");
-        Agent a06 = new Agent("Lucida",
+        Agents a06 = new Agents("Lucida",
                               "San Jose",
                               0.12,
                               "044-52981425",
                               "");
-        Agent a07 = new Agent("Anderson",
+        Agents a07 = new Agents("Anderson",
                               "Brisban",
                               0.13,
                               "045-21447739",
                               "");
-        Agent a08 = new Agent("Subbarao",
+        Agents a08 = new Agents("Subbarao",
                               "Bangalore",
                               0.14,
                               "077-12346674",
                               "");
-        Agent a09 = new Agent("Mukesh",
+        Agents a09 = new Agents("Mukesh",
                               "Mumbai",
                               0.11,
                               "029-12358964",
                               "");
-        Agent a10 = new Agent("McDen",
+        Agents a10 = new Agents("McDen",
                               "London",
                               0.15,
                               "078-22255588",
                               "");
-        Agent a11 = new Agent("Ivan",
+        Agents a11 = new Agents("Ivan",
                               "Torento",
                               0.15,
                               "008-22544166",
                               "");
-        Agent a12 = new Agent("Benjamin",
+        Agents a12 = new Agents("Benjamin",
                               "Hampshair",
                               0.11,
                               "008-22536178",
                               "");
 
-        Customer c01 = new Customer("Holmes",
+        Customers c01 = new Customers("Holmes",
                                     "London",
                                     "London",
                                     "UK",
@@ -149,7 +150,7 @@ public class SeedData
                                     4000.00,
                                     "BBBBBBB",
                                     a03);
-        Customer c02 = new Customer("Micheal",
+        Customers c02 = new Customers("Micheal",
                                     "New York",
                                     "New York",
                                     "USA",
@@ -160,7 +161,7 @@ public class SeedData
                                     6000.00,
                                     "CCCCCCC",
                                     a08);
-        Customer c03 = new Customer("Albert",
+        Customers c03 = new Customers("Albert",
                                     "New York",
                                     "New York",
                                     "USA",
@@ -171,7 +172,7 @@ public class SeedData
                                     6000.00,
                                     "BBBBSBB",
                                     a08);
-        Customer c04 = new Customer("Ravindran",
+        Customers c04 = new Customers("Ravindran",
                                     "Bangalore",
                                     "Bangalore",
                                     "India",
@@ -182,7 +183,7 @@ public class SeedData
                                     8000.00,
                                     "AVAVAVA",
                                     a11);
-        Customer c05 = new Customer("Cook",
+        Customers c05 = new Customers("Cook",
                                     "London",
                                     "London",
                                     "UK",
@@ -193,7 +194,7 @@ public class SeedData
                                     6000.00,
                                     "FSDDSDF",
                                     a06);
-        Customer c06 = new Customer("Stuart",
+        Customers c06 = new Customers("Stuart",
                                     "London",
                                     "London",
                                     "UK",
@@ -204,7 +205,7 @@ public class SeedData
                                     11000.00,
                                     "GFSGERS",
                                     a03);
-        Customer c07 = new Customer("Bolt",
+        Customers c07 = new Customers("Bolt",
                                     "New York",
                                     "New York",
                                     "USA",
@@ -215,7 +216,7 @@ public class SeedData
                                     3000.00,
                                     "DDNRDRH",
                                     a08);
-        Customer c08 = new Customer("Fleming",
+        Customers c08 = new Customers("Fleming",
                                     "Brisban",
                                     "Brisban",
                                     "Australia",
@@ -226,7 +227,7 @@ public class SeedData
                                     5000.00,
                                     "NHBGVFC",
                                     a05);
-        Customer c09 = new Customer("Jacks",
+        Customers c09 = new Customers("Jacks",
                                     "Brisban",
                                     "Brisban",
                                     "Australia",
@@ -237,7 +238,7 @@ public class SeedData
                                     7000.00,
                                     "WERTGDF",
                                     a05);
-        Customer c10 = new Customer("Yearannaidu",
+        Customers c10 = new Customers("Yearannaidu",
                                     "Chennai",
                                     "Chennai",
                                     "India",
@@ -248,7 +249,7 @@ public class SeedData
                                     8000.00,
                                     "ZZZZBFV",
                                     a10);
-        Customer c11 = new Customer("Sasikant",
+        Customers c11 = new Customers("Sasikant",
                                     "Mumbai",
                                     "Mumbai",
                                     "India",
@@ -259,7 +260,7 @@ public class SeedData
                                     11000.00,
                                     "147-25896312",
                                     a02);
-        Customer c12 = new Customer("Ramanathan",
+        Customers c12 = new Customers("Ramanathan",
                                     "Chennai",
                                     "Chennai",
                                     "India",
@@ -270,7 +271,7 @@ public class SeedData
                                     9000.00,
                                     "GHRDWSD",
                                     a10);
-        Customer c13 = new Customer("Avinash",
+        Customers c13 = new Customers("Avinash",
                                     "Mumbai",
                                     "Mumbai",
                                     "India",
@@ -281,7 +282,7 @@ public class SeedData
                                     9000.00,
                                     "113-12345678",
                                     a02);
-        Customer c14 = new Customer("Winston",
+        Customers c14 = new Customers("Winston",
                                     "Brisban",
                                     "Brisban",
                                     "Australia",
@@ -292,7 +293,7 @@ public class SeedData
                                     6000.00,
                                     "AAAAAAA",
                                     a05);
-        Customer c15 = new Customer("Karl",
+        Customers c15 = new Customers("Karl",
                                     "London",
                                     "London",
                                     "UK",
@@ -303,7 +304,7 @@ public class SeedData
                                     3000.00,
                                     "AAAABAA",
                                     a06);
-        Customer c16 = new Customer("Shilton",
+        Customers c16 = new Customers("Shilton",
                                     "Torento",
                                     "Torento",
                                     "Canada",
@@ -314,7 +315,7 @@ public class SeedData
                                     11000.00,
                                     "DDDDDDD",
                                     a04);
-        Customer c17 = new Customer("Charles",
+        Customers c17 = new Customers("Charles",
                                     "Hampshair",
                                     "Hampshair",
                                     "UK",
@@ -325,7 +326,7 @@ public class SeedData
                                     5000.00,
                                     "MMMMMMM",
                                     a09);
-        Customer c18 = new Customer("Srinivas",
+        Customers c18 = new Customers("Srinivas",
                                     "Bangalore",
                                     "Bangalore",
                                     "India",
@@ -336,7 +337,7 @@ public class SeedData
                                     9000.00,
                                     "AAAAAAB",
                                     a07);
-        Customer c19 = new Customer("Steven",
+        Customers c19 = new Customers("Steven",
                                     "San Jose",
                                     "San Jose",
                                     "USA",
@@ -347,7 +348,7 @@ public class SeedData
                                     3000.00,
                                     "KRFYGJK",
                                     a10);
-        Customer c20 = new Customer("Karolina",
+        Customers c20 = new Customers("Karolina",
                                     "Torento",
                                     "Torento",
                                     "Canada",
@@ -358,7 +359,7 @@ public class SeedData
                                     5000.00,
                                     "HJKORED",
                                     a04);
-        Customer c21 = new Customer("Martin",
+        Customers c21 = new Customers("Martin",
                                     "Torento",
                                     "Torento",
                                     "Canada",
@@ -369,7 +370,7 @@ public class SeedData
                                     8000.00,
                                     "MJYURFD",
                                     a04);
-        Customer c22 = new Customer("Ramesh",
+        Customers c22 = new Customers("Ramesh",
                                     "Mumbai",
                                     "Mumbai",
                                     "India",
@@ -380,7 +381,7 @@ public class SeedData
                                     12000.00,
                                     "Phone No",
                                     a02);
-        Customer c23 = new Customer("Rangarappa",
+        Customers c23 = new Customers("Rangarappa",
                                     "Bangalore",
                                     "Bangalore",
                                     "India",
@@ -391,7 +392,7 @@ public class SeedData
                                     12000.00,
                                     "AAAATGF",
                                     a01);
-        Customer c24 = new Customer("Venkatpati",
+        Customers c24 = new Customers("Venkatpati",
                                     "Bangalore",
                                     "Bangalore",
                                     "India",
@@ -402,7 +403,7 @@ public class SeedData
                                     12000.00,
                                     "JRTVFDD",
                                     a07);
-        Customer c25 = new Customer("Sundariya",
+        Customers c25 = new Customers("Sundariya",
                                     "Chennai",
                                     "Chennai",
                                     "India",
@@ -414,21 +415,21 @@ public class SeedData
                                     "PPHGRTS",
                                     a10);
 
-        Order o01 = new Order(1000.00,
+        Orders o01 = new Orders(1000.00,
                               600.00,
                               c13,
                               "SOD");
         o01.getPayments()
                 .add(pay1);
 
-        Order o02 = new Order(3000.00,
+        Orders o02 = new Orders(3000.00,
                               500.00,
                               c19,
                               "SOD");
         o02.getPayments()
                 .add(pay2);
 
-        Order o03 = new Order(4500.00,
+        Orders o03 = new Orders(4500.00,
                               900.00,
                               c07,
                               "SOD");
@@ -437,63 +438,63 @@ public class SeedData
         o03.getPayments()
                 .add(pay2);
 
-        Order o04 = new Order(2000.00,
+        Orders o04 = new Orders(2000.00,
                               0.00,
                               c16,
                               "SOD");
         o04.getPayments()
                 .add(pay4);
 
-        Order o05 = new Order(4000.00,
+        Orders o05 = new Orders(4000.00,
                               600.00,
                               c22,
                               "SOD");
         o05.getPayments()
                 .add(pay2);
 
-        Order o06 = new Order(2000.00,
+        Orders o06 = new Orders(2000.00,
                               0.00,
                               c12,
                               "SOD");
         o06.getPayments()
                 .add(pay3);
 
-        Order o07 = new Order(3500.00,
+        Orders o07 = new Orders(3500.00,
                               2000.00,
                               c02,
                               "SOD");
         o07.getPayments()
                 .add(pay4);
 
-        Order o08 = new Order(2500.00,
+        Orders o08 = new Orders(2500.00,
                               400.00,
                               c03,
                               "SOD");
         o08.getPayments()
                 .add(pay1);
 
-        Order o09 = new Order(500.00,
+        Orders o09 = new Orders(500.00,
                               0.00,
                               c23,
                               "SOD");
         o09.getPayments()
                 .add(pay3);
 
-        Order o10 = new Order(4000.00,
+        Orders o10 = new Orders(4000.00,
                               700.00,
                               c07,
                               "SOD");
         o10.getPayments()
                 .add(pay4);
 
-        Order o11 = new Order(1500.00,
+        Orders o11 = new Orders(1500.00,
                               600.00,
                               c08,
                               "SOD");
         o11.getPayments()
                 .add(pay2);
 
-        Order o12 = new Order(2500.00,
+        Orders o12 = new Orders(2500.00,
                               0.00,
                               c25,
                               "SOD");
@@ -591,7 +592,7 @@ public class SeedData
             String tempPhone = dataFaker.phoneNumber()
                     .phoneNumber();
 
-            Customer fakeCustomer = new Customer(theName,
+            Customers fakeCustomer = new Customers(theName,
                                                  custcity,
                                                  tempWorkingarea,
                                                  tempCustcountry,
@@ -617,14 +618,14 @@ public class SeedData
                 String tempGetOrderdescription = dataFaker.lorem()
                         .characters();
 
-                Order newOrder = new Order(tempGetOrdamount,
+                Orders newOrder = new Orders(tempGetOrdamount,
                                            tempGetAdvanceamount,
                                            fakeCustomer,
                                            tempGetOrderdescription);
 
-                newOrder.getPayments().add(pay1);
-                fakeCustomer.getOrders()
-                        .add(newOrder);
+//                newOrder.getPayments().add(pay1);
+//                fakeCustomer.getOrders()
+//                        .add(newOrder);
             }
 
             // this actually saves the faker data.
